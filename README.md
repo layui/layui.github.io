@@ -1,2 +1,2 @@
 # docs
-文档
+[](https://layui.github.io/docs/)
