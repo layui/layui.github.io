@@ -1,2 +1,2 @@
 # docs
-[](https://layui.github.io/docs/)
+https://layui.github.io/docs/
