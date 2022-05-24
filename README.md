@@ -1,1 +1,2 @@
-https://layui.github.io/docs/
+# layui docs
+https://layui.github.io

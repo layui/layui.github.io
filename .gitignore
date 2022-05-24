@@ -21,7 +21,6 @@ _site/
 .git/
 
 src/
-layuion/
 node/
 gulpfile.js
 package-lock.json
