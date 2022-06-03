@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <title>Layui - 开源模块化 Web UI 组件库</title>
-      <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width">
     <script>
-    ;!function(){self!==parent&&(location.href="//www.baidu.com/")}();
+      ;!function(){self!==parent&&(location.href="//www.baidu.com/")}();
     </script>
     <link href="https://cdn.staticfile.org/layui/2.6.11/css/layui.css" rel="stylesheet">
   </head>
@@ -30,7 +30,7 @@
         </div>
       </blockquote>
       
-      <div style="height: 90px; padding: 16px 0; text-align: center;">
+      <div style="padding: 16px 0; text-align: center;">
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6111334333458862"
           crossorigin="anonymous"></script>
         <!-- auto -->
@@ -44,27 +44,135 @@
           (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
       </div>
+      
+      <textarea class="layui-hide" id="md">
+## 快速上手
+
+获得 layui 后，将其完整地部署到你的静态资源项目目录，你只需要引入下述两个文件：
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>开始使用 layui</title>
+  <link rel="stylesheet" href="./layui/css/layui.css">
+</head>
+<body>
+ 
+<!-- 你的 HTML 代码 -->
+ 
+<script src="./layui/layui.js"></script>
+<script>
+//一般直接写在一个 js 文件中
+layui.use(['layer', 'form'], function(){
+  var layer = layui.layer
+  ,form = layui.form;
+  
+  //欢迎语
+  layer.msg('Hello World');
+});
+</script> 
+</body>
+</html>
+```
+
+<br>
+  
+> 愿 layui 能成为你得心应手的 Web 界面解决方案，化作你方寸屏幕前的亿万字节！
+ 
+## 贡献者
+[贡献者列表](https://github.com/layui/layui/graphs/contributors)
+
+> 大概是因为 layui 让开发者变得更懒，所以贡献者才如此之少。  
+
+## 相关
+> layui 原官网已于2021年10月13日下线。
+
+目前包括版本更新、文档等在内的所有日常维护，都以 Github 或 Gitee 项目主页为准。
+      </textarea>
+      <div class="layui-text" style="padding: 16px 0;" id="md-view"></div>
+      
+      <hr>
+      
+      <div class="layui-footer" style="padding: 16px 0; line-height: 24px;;">
+        <p>
+          Copyright &copy; 2022 <a href="/">layui</a> MIT Licensed</p>
+        <p id="LAY-footer-info">
+          <a href="https://github.com/layui/layui/blob/main/DISCLAIMER.md" rel="nofollow" target="_blank">免责声明</a> 
+          <a href="https://github.com/layui/layui/blob/main/LICENSE" rel="nofollow" target="_blank">开源协议</a>
+          本页托管于 
+          <a href="https://gitee.com/" target="_blank">Github Pages</a>
+        </p>
+        <p>
+          <span>
+            感谢 <a href="https://www.upyun.com/?invite=SJ0wu6g2-" target="_blank" rel="nofollow" sponsor="upyun" class="layui-font-blue">
+              <strong>又拍云</strong>
+            </a> 提供云加速支持
+          </span>
+        </p>
+      </div>
+      
     </div>
      
     <script src="https://cdn.staticfile.org/layui/2.6.11/layui.js"></script>
-     
+    <script>
+      layui.use(function(){
+        var layer = layui.layer;
+        
+        //输出版本号
+        lay('#version').html(layui.v);
+      });
+    </script>
+    
+    <script src="https://cdn.staticfile.org/markdown-it/13.0.1/markdown-it.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/11.5.1/styles/github.min.css">
+    <style>
+      pre code.hljs{font-family: Consolas; background-color: #F6F8FA;}
+    </style>
+    <script src="https://cdn.staticfile.org/highlight.js/11.5.1/highlight.min.js"></script>
+    <script>
+      layui.use(function(){
+        var md = new markdownit({
+          html: true
+          ,typographer: true
+          ,linkify: true
+          ,langPrefix: 'hljs language-'
+          ,breaks: true
+          ,highlight: function(str, lang){
+            if(lang && hljs.getLanguage(lang)){
+              try {
+                return hljs.highlight(str, {
+                  language: lang
+                }).value;
+              } catch (e) {}
+            }
+            return ''; // use external default escaping
+          }
+        });
+        
+        // 替换
+        md.renderer.rules.blockquote_open = function () {
+          return '<blockquote class="layui-elem-quote">\n';
+        };
+        
+        var mdSrcElem = lay('#md')
+        ,content = md.render(mdSrcElem.val());
+        
+        mdSrcElem[0].innerHTML = '';
+        lay('#md-view').html(content);
+      });
+    </script>
+    
     <script>
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?f9610283b67e9659e77c0e9a597dfee9";
+      hm.src = "https://hm.baidu.com/hm.js?697ca70ccd7673d85e991c9168d9cc09";
       var s = document.getElementsByTagName("script")[0]; 
       s.parentNode.insertBefore(hm, s);
     })();
-    </script>
-
-    <script>
-    layui.use(function(){
-      var layer = layui.layer;
-      
-      //输出版本号
-      lay('#version').html(layui.v);
-    });
     </script>
   </body>
 </html>
