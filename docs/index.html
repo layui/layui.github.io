@@ -10,18 +10,33 @@
     <link href="https://cdn.staticfile.org/layui/2.6.11/css/layui.css" rel="stylesheet">
   </head>
   <body class="site-home">
-    <div class="layui-container" style="margin-top: 32px;">
-      <div class="layui-btn-container">
-        <a href="https://layui.gitee.io/v2/" class="layui-btn">前往 2.x 版本</a>
-        <a href="https://layui.gitee.io/v2/docs/" class="layui-btn layui-btn-normal">
-          文档
-        </a>
+    <div class="layui-header" style="background-color: #393D49;">
+      <div class="layui-container">
+        <ul class="layui-nav" lay-filter="">
+          <li class="layui-nav-item layui-this"><a href="https://layui.gitee.io/v2/">首页</a></li>
+          <li class="layui-nav-item"><a href="https://layui.gitee.io/v2/docs/">文档</a></li>
+          <li class="layui-nav-item"><a href="https://layui.gitee.io/v2/demo/">示例</a></li>
+          <li class="layui-nav-item">
+            <a href="javascript:;">生态</a>
+            <dl class="layui-nav-child layui-nav-child-r">  
+            <dd lay-unselect>
+              <a href="https://gitee.com/layui/layui-vue/" target="_blank" lay-unselect>
+                layui-vue (他人实现)
+              </a>
+            </dd>
+            <dd lay-unselect><a href="//dev.layuion.com/extend/" target="_blank">layui 第三方扩展组件</a></dd>
+            <dd lay-unselect><a href="//layuion.com/layer/" target="_blank">layer 组件单独版</a></dd>
+          </dl>
+          </li>
+          <li class="layui-nav-item layui-hide-xs">
+            <a href="//gitee.com/sentsin/layui/issues" target="_blank" rel="nofollow">反馈</a>
+          </li>
+        </ul>
       </div>
-      <div class="layui-progress" style="margin: 16px 0;">
-        <div class="layui-progress-bar" lay-percent="100%"></div>
-      </div>
-      
-      <blockquote class="layui-elem-quote" style="margin-top: 30px;">
+    </div>
+    
+    <div class="layui-container" style="margin-top: 16px;">
+      <blockquote class="layui-elem-quote">
         <div class="layui-text">
           <ul>
             <li>当前版本：v<span id="version"></span></li>
@@ -94,7 +109,16 @@ layui.use(['layer', 'form'], function(){
       </textarea>
       <div class="layui-text" style="padding: 16px 0;" id="md-view"></div>
       
-      <hr>
+      <div class="layui-btn-container">
+        <a href="https://layui.gitee.io/v2/" class="layui-btn">前往 2.x 版本</a>
+        <a href="https://layui.gitee.io/v2/docs/" class="layui-btn layui-btn-normal">
+          文档
+        </a>
+      </div>
+      
+      <div class="layui-progress" style="margin: 16px 0;">
+        <div class="layui-progress-bar" lay-percent="100%"></div>
+      </div>
       
       <div class="layui-footer" style="padding: 16px 0; line-height: 24px;;">
         <p>
@@ -141,6 +165,9 @@ layui.use(['layer', 'form'], function(){
           ,langPrefix: 'hljs language-'
           ,breaks: true
           ,highlight: function(str, lang){
+            hljs.configure({
+              //classPrefix: 'layui-code-'
+            })
             if(lang && hljs.getLanguage(lang)){
               try {
                 return hljs.highlight(str, {
