@@ -1,416 +1,178 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Layui - 开源模块化 Web UI 组件库</title>
-    <meta name="viewport" content="width=device-width">
-    
-    <link href="https://cdn.staticfile.org/layui/2.6.11/css/layui.css" rel="stylesheet">
-  </head>
-  <body>
-    <!--<div class="layui-header" style="background-color: #393D49;">
-      <div class="layui-container">
-        <ul class="layui-nav" lay-filter="">
-          <li class="layui-nav-item layui-this"><a href="https://layui.gitee.io/v2/">首页</a></li>
-          <li class="layui-nav-item"><a href="https://layui.gitee.io/v2/docs/">文档</a></li>
-          <li class="layui-nav-item"><a href="https://layui.gitee.io/v2/demo/">示例</a></li>
-          <li class="layui-nav-item">
-            <a href="javascript:;">生态</a>
-            <dl class="layui-nav-child layui-nav-child-r">  
-            <dd lay-unselect>
-              <a href="https://gitee.com/layui/layui-vue/" target="_blank" lay-unselect>
-                layui-vue (他人实现)
-              </a>
-            </dd>
-            <dd lay-unselect><a href="//dev.layuion.com/extend/" target="_blank">layui 第三方扩展组件</a></dd>
-            <dd lay-unselect><a href="//layuion.com/layer/" target="_blank">layer 组件单独版</a></dd>
-          </dl>
-          </li>
-          <li class="layui-nav-item layui-hide-xs">
-            <a href="//gitee.com/sentsin/layui/issues" target="_blank" rel="nofollow">反馈</a>
-          </li>
-        </ul>
-      </div>
-    </div>-->
-    
-    <div class="layui-container" style="margin-top: 16px;">      
-      <div class="layui-text">
-        <h2>获得 layui</h2>
-        <p>1. 官网首页下载</p>
-        <p>你可以在我们的 官网首页 下载到 layui 的最新版，它经过了自动化构建，更适合用于生产环境。目录结构如下：</p>
-        <pre class="layui-code">
-layui/
-  ├─css
-  │  └─layui.css //核心样式文件
-  └─layui.js //核心库
-        </pre>
-        
-        <p>2. Git 仓库下载</p>
-        <blockquote class="layui-elem-quote layui-quote-nm">
-          你也可以通过 GitHub 或 Gitee 下载 Layui 源代码或 Release 版
-          <br><br>
-          <p>
-            <iframe src="//ghbtns.com/github-btn.html?user=layui&amp;repo=layui&amp;type=watch&amp;count=true&amp;size=large" allowtransparency="true" frameborder="0" scrolling="0" width="156px" height="30px"></iframe>
-            <iframe src="//ghbtns.com/github-btn.html?user=layui&amp;repo=layui&amp;type=fork&amp;count=true&amp;size=large" allowtransparency="true" frameborder="0" scrolling="0" width="156px" height="30px"></iframe>
-          </p>
-        </blockquote>
-      </div>
-      
-      <div style="padding: 16px 0; text-align: center;">
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6111334333458862"
-           crossorigin="anonymous"></script>
-        <!-- 847*96 -->
-        <ins class="adsbygoogle"
-           style="display:inline-block;width:847px;height:96px"
-           data-ad-client="ca-pub-6111334333458862"
-           data-ad-slot="9167317464"></ins>
-        <script>
-           (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-      </div>
-      
-      <div class="layui-text" style="padding: 16px 0;" id="md-view"><p>3 . npm 下载或第三方 CDN 方式引入：</p>
-      <pre><code class="hljs language-html">npm i layui</code></pre>
-      <br>
-      <pre><code class="hljs language-html"><span class="hljs-comment">&lt;!-- 引入 layui.css --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"//unpkg.com/layui@2.6.11/dist/css/layui.css"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span>&gt;</span>
-<span class="hljs-comment">&lt;!-- 引入 layui.js --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"//unpkg.com/layui@2.6.11/dist/layui.js"</span>&gt;</span></code></pre>
-      <br> 
-      <h2>快速上手</h2>
-      <p>获得 layui 后，将其完整地部署到你的静态资源项目目录，你只需要引入下述两个文件：</p>
-      <pre><code class="hljs language-html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"utf-8"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>开始使用 layui<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"./layui/css/layui.css"</span>&gt;</span>
-  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
-
-  <span class="hljs-comment">&lt;!-- 你的 HTML 代码 --&gt;</span>
-
-  <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"./layui/layui.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
-    <span class="hljs-comment">//一般直接写在一个 js 文件中</span>
-    layui.<span class="hljs-title function_">use</span>([<span class="hljs-string">'layer'</span>, <span class="hljs-string">'form'</span>], <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>){
-    <span class="hljs-keyword">var</span> layer = layui.<span class="hljs-property">layer</span>
-    ,form = layui.<span class="hljs-property">form</span>;
-
-    <span class="hljs-comment">//欢迎语</span>
-    layer.<span class="hljs-title function_">msg</span>(<span class="hljs-string">'Hello World'</span>);
-  });
-  </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span> 
-<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
-      </code></pre>
-      <br>
-      <h2>建立模块入口</h2>
-      <p>您可以遵循 layui 的模块规范建立一个入口文件，并通过 layui.use() 方式来加载该入口文件，如下所示：</p>
-      <pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
-layui.<span class="hljs-title function_">config</span>({
-  <span class="hljs-attr">base</span>: <span class="hljs-string">'/res/js/modules/'</span> <span class="hljs-comment">//你存放新模块的目录，注意，不是 layui 的模块目录</span>
-}).<span class="hljs-title function_">use</span>(<span class="hljs-string">'index'</span>); <span class="hljs-comment">//加载入口</span>
-      </span></code></pre>
-      <p>上述的 index 即为你 /res/js/modules/ 目录下的 index.js，它的内容应该如下：</p>
-      <pre><code class="hljs language-javascript"><span class="hljs-comment">/**
-  * index.js 项目 JS 主入口
-  * 以依赖 layui 的 layer 和 form 模块为例
-  */</span>    
-layui.<span class="hljs-title function_">define</span>([<span class="hljs-string">'layer'</span>, <span class="hljs-string">'form'</span>], <span class="hljs-keyword">function</span>(<span class="hljs-params"><span class="hljs-built_in">exports</span></span>){
-  <span class="hljs-keyword">var</span> layer = layui.<span class="hljs-property">layer</span>
-  ,form = layui.<span class="hljs-property">form</span>;
-  
-  layer.<span class="hljs-title function_">msg</span>(<span class="hljs-string">'Hello World'</span>);
-  
-  <span class="hljs-built_in">exports</span>(<span class="hljs-string">'index'</span>, {}); <span class="hljs-comment">//注意，这里是模块输出的核心，模块名必须和 use 时的模块名一致</span>
-});    
-      </code></pre>
-      <p>从 layui 2.6 开始，如果你引入的是构建后的 layui.js，里面即包含了 layui 所有的内置模块，无需再指定内置模块。如：</p>
-      <pre><code class="hljs language-javascript"><span class="hljs-comment">/**
- * index.js 项目 JS 主入口
- */</span> 
-layui.<span class="hljs-title function_">define</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>){ <span class="hljs-comment">// 需确保您的 layui.js 是引入的构建后的版本（即官网下载或 git 平台的发行版）</span>
-  <span class="hljs-comment">//直接可得到各种内置模块</span>
-  <span class="hljs-keyword">var</span> layer = layui.<span class="hljs-property">layer</span>
-  ,form = layui.<span class="hljs-property">form</span>
-  ,table = layui.<span class="hljs-property">table</span>;
-
-  <span class="hljs-comment">//…</span>
-  layer.<span class="hljs-title function_">msg</span>(<span class="hljs-string">'Hello World'</span>);
-
-  <span class="hljs-built_in">exports</span>(<span class="hljs-string">'index'</span>, {}); <span class="hljs-comment">//注意，这里是模块输出的核心，模块名必须和 use 时的模块名一致</span>
-});
-      </code></pre>
-      <h2>管理扩展模块</h2>
-      <p>除了使用 layui 的内置模块，必不可少也需要加载扩展模块（可以简单理解为符合 layui 模块规范的 JS 文件）。我们假设你的项目中存放了很多个扩展模块，如下所举：</p>
-      <pre><code class="hljs language-javascript">
-<span class="hljs-comment">//mod1.js</span>
-layui.<span class="hljs-title function_">define</span>(<span class="hljs-string">'layer'</span>, <span class="hljs-keyword">function</span>(<span class="hljs-params"><span class="hljs-built_in">exports</span></span>){
-  <span class="hljs-comment">//…</span>
-  <span class="hljs-built_in">exports</span>(mod1, {});
-});
- 
-<span class="hljs-comment">//mod2.js，假设依赖 mod1 和 form</span>
-layui.<span class="hljs-title function_">define</span>([<span class="hljs-string">'mod1'</span>, <span class="hljs-string">'form'</span>], <span class="hljs-keyword">function</span>(<span class="hljs-params"><span class="hljs-built_in">exports</span></span>){
-  <span class="hljs-comment">//…</span>
-  <span class="hljs-built_in">exports</span>(mod2, {});
-});  
- 
-<span class="hljs-comment">//mod3.js</span>
-<span class="hljs-comment">//… </span>
- 
-<span class="hljs-comment">//main.js 主入口模块</span>
-layui.<span class="hljs-title function_">define</span>(<span class="hljs-string">'mod2'</span>, <span class="hljs-keyword">function</span>(<span class="hljs-params"><span class="hljs-built_in">exports</span></span>){
-  <span class="hljs-comment">//…</span>
-  <span class="hljs-built_in">exports</span>(<span class="hljs-string">'main'</span>, {});
-});
-      </code></pre>
-      <p>上述扩展模块在经过了一定的模块依赖关系后，同样可以合并为一个文件来加载。我们可以借助 Gulp 将上述的 mod1、mod2、mod3、main 等扩展模块构建合并到一个模块文件中：main.js，此时你只需要加载它即可：</p>
-      <pre><code class="hljs language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript">
-layui.<span class="hljs-title function_">config</span>({
-  <span class="hljs-attr">base</span>: <span class="hljs-string">'/res/js/modules/'</span> <span class="hljs-comment">//你的扩展模块所在目录</span>
-}).<span class="hljs-title function_">use</span>(<span class="hljs-string">'main'</span>); <span class="hljs-comment">//这里的 main 模块包含了 mod1、mod2、mod3 等等扩展模块</span>
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span> 
-      </code></pre>
-      <p>可以看到，这样我们最多只需要加载两个 JS 文件：layui.js、main.js。这将大幅度减少静态资源的请求。</p>
-      <br> 
-      <blockquote class="layui-elem-quote">
-      <p>愿 layui 能成为你得心应手的 Web 界面解决方案，化作你方寸屏幕前的亿万字节！</p>
-      </blockquote>
-      </div>
-      
-      <textarea class="layui-hide" id="md">
-3 . npm 下载或第三方 CDN 方式引入：
-```html
-npm i layui
-```
-<br>
-
-```html
-<!-- 引入 layui.css -->
-<link href="//unpkg.com/layui@2.6.11/dist/css/layui.css" rel="stylesheet">
-<!-- 引入 layui.js -->
-<script src="//unpkg.com/layui@2.6.11/dist/layui.js">
-```
-
-<br> 
-        
-## 快速上手
-
-获得 layui 后，将其完整地部署到你的静态资源项目目录，你只需要引入下述两个文件：
-
-```html
-<!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
   <meta charset="utf-8">
+  <title>Layui - 经典开源模块化前端 UI 组件库</title>
+  <base href="https://layui.gitee.io">
+  <meta name="keywords" content="layui,ui,前端框架">
+  <meta name="description" content="一套开源的 Web UI 组件库。采用自身极简的模块化规范，并遵循原生 HTML/CSS/JS 的开发模式，极易上手，开箱即用。非常适合网页界面的快速构建。">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>开始使用 layui</title>
-  <link rel="stylesheet" href="./layui/css/layui.css">
+  <script>
+  ;!function(){self!==parent&&(location.href="//www.baidu.com/")}();
+  </script>
+  <link href="//res.layuion.com/layui/v/2.6.12/css/layui.css" rel="stylesheet">
+  <link href="//res.layuion.com/static/css/global.css?t=1654465008380" rel="stylesheet">
 </head>
-<body>
- 
-<!-- 你的 HTML 代码 -->
- 
-<script src="./layui/layui.js"></script>
-<script>
-//一般直接写在一个 js 文件中
-layui.use(['layer', 'form'], function(){
-  var layer = layui.layer
-  ,form = layui.form;
-  
-  //欢迎语
-  layer.msg('Hello World');
-});
-</script> 
-</body>
-</html>
-```
-<br>
-
-## 建立模块入口
-
-您可以遵循 layui 的模块规范建立一个入口文件，并通过 layui.use() 方式来加载该入口文件，如下所示：
-
-```html
-<script>
-layui.config({
-  base: '/res/js/modules/' //你存放新模块的目录，注意，不是 layui 的模块目录
-}).use('index'); //加载入口
-```
-上述的 index 即为你 /res/js/modules/ 目录下的 index.js，它的内容应该如下：
-  
-```javascript
-/**
-  index.js 项目 JS 主入口
-  以依赖 layui 的 layer 和 form 模块为例
-**/    
-layui.define(['layer', 'form'], function(exports){
-  var layer = layui.layer
-  ,form = layui.form;
-  
-  layer.msg('Hello World');
-  
-  exports('index', {}); //注意，这里是模块输出的核心，模块名必须和 use 时的模块名一致
-});    
-```
-
-从 layui 2.6 开始，如果你引入的是构建后的 layui.js，里面即包含了 layui 所有的内置模块，无需再指定内置模块。如：
-
-```javascript
-/**
-  index.js 项目 JS 主入口
-**/ 
-layui.define(function(){ // 需确保您的 layui.js 是引入的构建后的版本（即官网下载或 git 平台的发行版）
-  //直接可得到各种内置模块
-  var layer = layui.layer
-  ,form = layui.form
-  ,table = layui.table;
-  
-  //…
-  layer.msg('Hello World');
-  
-  exports('index', {}); //注意，这里是模块输出的核心，模块名必须和 use 时的模块名一致
-});
-```
-
-## 管理扩展模块
-
-除了使用 layui 的内置模块，必不可少也需要加载扩展模块（可以简单理解为符合 layui 模块规范的 JS 文件）。我们假设你的项目中存放了很多个扩展模块，如下所举：
-
-```javascript
-//mod1.js
-layui.define('layer', function(exports){
-  //…
-  exports(mod1, {});
-});
- 
-//mod2.js，假设依赖 mod1 和 form
-layui.define(['mod1', 'form'], function(exports){
-  //…
-  exports(mod2, {});
-});  
- 
-//mod3.js
-//… 
- 
-//main.js 主入口模块
-layui.define('mod2', function(exports){
-  //…
-  exports('main', {});
-});
-```
-
-上述扩展模块在经过了一定的模块依赖关系后，同样可以合并为一个文件来加载。我们可以借助 Gulp 将上述的 mod1、mod2、mod3、main 等扩展模块构建合并到一个模块文件中：main.js，此时你只需要加载它即可：
-
-```html
-<script>
-layui.config({
-  base: '/res/js/modules/' //你的扩展模块所在目录
-}).use('main'); //这里的 main 模块包含了 mod1、mod2、mod3 等等扩展模块
-</script> 
-```
-
-可以看到，这样我们最多只需要加载两个 JS 文件：layui.js、main.js。这将大幅度减少静态资源的请求。
-  
-<br> 
-
-> 愿 layui 能成为你得心应手的 Web 界面解决方案，化作你方寸屏幕前的亿万字节！
-
-      </textarea>
-      <div class="layui-text" style="padding: 16px 0;" id="md-view"></div>
+<body class="site-home" id="LAY_home" style="background-color: #eee;">
+<div class="layui-header header header-index">
+  <div class="layui-container">
+    <a class="logo" href="/v2/">
+      <img src="//res.layuion.com/static/images/layui/logo.png" alt="layui">
+    </a>
+    <div class="layui-form layui-hide-xs component" lay-filter="LAY-site-header-component"></div>
+    <div class="layui-hide-xs site-notice"></div>
+    
+    <ul class="layui-nav" id="LAY_NAV_TOP">
+      <li class="layui-nav-item" data-dir="docs">
+        <a href="/v2/docs/">文档</a> 
+      </li>
+      <li class="layui-nav-item" data-dir="demo">
+        <a href="/v2/demo/">示例</a>
+      </li>
       
-      <blockquote class="layui-elem-quote">
-        <div class="layui-text">
-          <ul>
-            <li>当前版本：v<span id="version"></span></li>
-            <li>Layui 是一套开源的 Web UI（界面）组件库，基于浏览器端原生态 HTML/CSS/JS 开发模式。</li>
-          </ul>
-        </div>
-      </blockquote>
+      <li class="layui-nav-item">
+        <a href="javascript:;">
+          <!--<span class="layui-badge-dot" style="left:0; right: auto; margin: -4px 0 0 5px;"></span>--> 
+          生态
+        </a>
+        <dl class="layui-nav-child layui-nav-child-r">  
+          <dd class="layui-hide-sm layui-show-xs" lay-unselect>
+            <a href="https://gitee.com/sentsin/layui/issues" target="_blank" rel="nofollow">问题反馈</a>
+            <hr>
+          </dd>
+          
+          <dd lay-unselect><a href="https://gitee.com/layui/layui-vue/" target="_blank" lay-unselect>layui-vue (他人实现)</a></dd>
+          <dd lay-unselect><a href="//dev.layuion.com/extend/" target="_blank">layui 第三方扩展组件</a></dd>
+          <dd lay-unselect><a href="//layuion.com/layer/" target="_blank">layer 组件单独版</a></dd>
+        </dl>
+      </li>
       
-      <div class="layui-progress" style="margin: 16px 0;">
-        <div class="layui-progress-bar" lay-percent="100%"></div>
-      </div>
-      
-      <div class="layui-footer" style="padding: 16px 0; line-height: 24px;;">
-        <p>
-          Copyright &copy; 2022 layui MIT Licensed</p>
-        <p id="LAY-footer-info">
-          本页托管于  Github Pages
-        </p>
-        <p>
-          <span>
-            感谢 又拍云 提供云加速支持
-          </span>
-        </p>
-      </div>
-      
+      <li class="layui-nav-item layui-hide-xs">
+        <a href="//gitee.com/sentsin/layui/issues" target="_blank" rel="nofollow">反馈</a>
+      </li>
+    </ul>
+  </div>
+</div>
+ 
+<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+<!--[if lt IE 9]>
+  <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+  <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+ 
+<div class="site-banner">
+  <div class="site-banner-bg">
+  </div>
+  <div class="site-banner-main">
+    <div class="site-zfj">
+      <i class="layui-icon" style="color: #fff; color: rgba(255,255,255,.6);">&#xe609;</i>
     </div>
-     
-    <script src="https://cdn.staticfile.org/layui/2.6.11/layui.js"></script>
-    <script>
-      layui.use(function(){
-        var layer = layui.layer;
-        
-        //输出版本号
-        lay('#version').html(layui.v);
-      });
-    </script>
-    
-    <script src="https://cdn.staticfile.org/markdown-it/13.0.1/markdown-it.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/11.5.1/styles/github.min.css">
-    <style>
-      pre code.hljs{font-family: Consolas; background-color: #F6F8FA;}
-    </style>
-    <script src="https://cdn.staticfile.org/highlight.js/11.5.1/highlight.min.js"></script>
-    <script>
-      layui.use(function(){
-        return;
-        var md = markdownit({
-          html: true
-          ,typographer: true
-          ,linkify: true
-          ,langPrefix: 'hljs language-'
-          ,breaks: true
-          ,highlight: function(str, lang){
-            hljs.configure({
-              //classPrefix: 'layui-code-'
-            })
-            if(lang && hljs.getLanguage(lang)){
-              try {
-                return hljs.highlight(str, {
-                  language: lang
-                }).value;
-              } catch (e) {}
-            }
-            return ''; // use external default escaping
-          }
-        });
-        
-        // 替换
-        md.renderer.rules.blockquote_open = function () {
-          return '<blockquote class="layui-elem-quote">\n';
-        };
-        
-        var mdSrcElem = lay('#md')
-        ,content = md.render(mdSrcElem.val());
-        
-        mdSrcElem[0].innerHTML = '';
-        lay('#md-view').html(content);
-      });
-    </script>
-    
-    <script>
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?697ca70ccd7673d85e991c9168d9cc09";
-      var s = document.getElementsByTagName("script")[0]; 
-      s.parentNode.insertBefore(hm, s);
-    })();
-    </script>
-  </body>
+    <div class="layui-anim site-desc">
+      <p class="web-font-desc">开源模块化前端 UI 组件库</p>
+      <cite>基于浏览器端原生态模式，面向全层次的前后端开发者，易上手且开源免费的 Web 界面组件库</cite>
+    </div>
+    <div class="site-download">
+      <a href="https://gitee.com/sentsin/layui/attach_files/1084793/download" class="layui-inline site-down" target="_blank">
+        <cite class="layui-icon">&#xe601;</cite>
+        立即下载
+      </a>
+    </div>
+    <div class="site-version">
+      <span>当前版本：v<cite class="site-showv">…</cite></span>
+      <span><a href="/v2/docs/base/changelog.html" rel="nofollow" target="_blank">更新日志</a></span>
+    </div>
+    <div class="site-banner-other">
+      <a href="https://github.com/sentsin/layui/" target="_blank" rel="nofollow" class="site-star">
+        <i class="layui-icon">&#xe658;</i>
+        Star <cite id="getStars"></cite> 
+      </a>
+      <a href="https://gitee.com/sentsin/layui" target="_blank" rel="nofollow" class="site-fork">
+        Gitee
+      </a>
+      <a href="https://github.com/layui/layui/blob/main/DISCLAIMER.md" target="_blank" class="site-fork">
+        免责声明
+      </a>
+    </div>
+  </div>
+</div>
+<div class="layui-container">
+  
+  
+  <ul class="layui-row layui-col-space30 site-idea">
+    <li class="layui-col-md4">
+      <div>
+        <fieldset class="layui-elem-field layui-field-title">
+          <legend>返璞归真</legend>
+          <p>身处在前端社区的繁荣之下，我们都在有意或无意地追逐。而 layui 偏偏回望当初，奔赴在返璞归真的漫漫征途，自信并勇敢着，追寻于原生态的书写指令，试图以最简单的方式诠释高效。</p>
+        </fieldset>
+      </div>
+    </li>
+    <li class="layui-col-md4">
+      <div>
+        <fieldset class="layui-elem-field layui-field-title">
+          <legend>双面体验</legend>
+          <p>拥有双面的不仅是人生，还有 layui。一面极简，一面丰盈。极简是视觉所见的外在，是开发所念的简易。丰盈是倾情雕琢的内在，是信手拈来的承诺。一切本应如此，简而全，双重体验。</p>
+        </fieldset>
+      </div>
+    </li>
+    <li class="layui-col-md4">
+      <div>
+        <fieldset class="layui-elem-field layui-field-title">
+          <legend>星辰大海</legend>
+          <p>如果眼下还是一团零星之火，那运筹帷幄之后，迎面东风，就是一场烈焰燎原吧，那必定会是一番尽情的燃烧。待，秋风萧瑟时，散作满天星辰，你看那四季轮回<!--海天相接-->，正是 layui 不熄的执念。</p>
+        </fieldset>
+      </div>
+    </li>
+  </ul>
+  
+</div>
+<div class="layui-footer footer footer-index">
+  <p>
+    Copyright &copy; 2022 <a href="/v2/">layui</a> MIT Licensed</p>
+  <p id="LAY-footer-info">
+    <a href="https://github.com/layui/layui/blob/main/DISCLAIMER.md" rel="nofollow" target="_blank">免责声明</a> 
+    <a href="https://github.com/layui/layui/blob/main/LICENSE" rel="nofollow" target="_blank">开源协议</a>
+  </p>
+  <p>
+    <span>
+      感谢 <a href="https://www.upyun.com/?invite=SJ0wu6g2-" target="_blank" rel="nofollow" sponsor="upyun" class="layui-font-blue">
+        <strong>又拍云</strong>
+      </a> 提供云加速支持
+    </span>
+  </p>
+</div>
+<script>
+window.global = {
+  pageType: 'index'
+  ,preview: function(){
+    var preview = document.getElementById('LAY_preview');
+    return preview ? preview.innerHTML : '';
+  }()
+};
+</script>
+<div class="site-tree-mobile layui-hide">
+  <i class="layui-icon layui-icon-spread-left"></i>
+</div>
+<div class="site-mobile-shade"></div>
+ 
+<script src="//res.layuion.com/layui/v/2.6.12/layui.js"></script>
+<script>
+layui.config({
+  base: '//res.layuion.com/static/modules/'
+  ,version: '1654465008380'
+}).use('global');
+</script>
+ 
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?697ca70ccd7673d85e991c9168d9cc09";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</body>
 </html>
